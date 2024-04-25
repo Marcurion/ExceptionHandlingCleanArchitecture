@@ -1,0 +1,11 @@
+@dnet_exception_handling.Presentation_HostAddress = http://localhost:5291
+
+DELETE {{dnet_exception_handling.Presentation_HostAddress}}/my/
+Accept: application/json
+###
+
+GET {{dnet_exception_handling.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+

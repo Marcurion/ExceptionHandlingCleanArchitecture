@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace("-", "_"))</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\dnet-exception-handling.Application\dnet-exception-handling.Application.csproj" PrivateAssets="All" />
+        <ProjectReference Include="..\dnet-exception-handling.Domain\dnet-exception-handling.Domain.csproj" PrivateAssets="All" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Common\Options\" />
+        <Folder Include="Persistence\" />
+    </ItemGroup>
+</Project>
