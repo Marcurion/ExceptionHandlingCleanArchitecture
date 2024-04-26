@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dnet_exception_handling.Application.Exceptions;
+using dnet_exception_handling.Application.Exceptions.Infrastructure;
 using dnet_exception_handling.Domain.Interfaces;
 
 namespace dnet_exception_handling.Application
@@ -28,12 +29,19 @@ namespace dnet_exception_handling.Application
             {
                 _repository.SaveAsync();
             }
-            // Exception is re-contextualized for application layer, the exception is named from a use-case perspective
-            // We still don't know the exact exception type since we do not see the infrastructure layer in clean architecture
+            
+            catch (ConnectionOfflineException e)
+            {
+                throw; // Better handle on presentation layer as 504 - Gateway timeout
+            }
+            catch (SqlSaveException e) // Exception is re-contextualized for application layer, the exception is named from a use-case perspective
+            {
+                throw new DataChangeException("When we modified some business data things went south.", e);
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw new DataChangeException("When we modified some business data things went south.", e);
+                // no need to re-throw an unknown exception
             }
 
             

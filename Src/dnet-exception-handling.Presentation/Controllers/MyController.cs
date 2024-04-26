@@ -1,5 +1,6 @@
 ﻿using dnet_exception_handling.Application;
 using dnet_exception_handling.Application.Exceptions;
+using dnet_exception_handling.Application.Exceptions.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dnet_exception_handling.Presentation.Controllers
@@ -41,6 +42,11 @@ namespace dnet_exception_handling.Presentation.Controllers
                 Console.WriteLine(e);
                 return StatusCode(404); // 404 - Not found
 
+            }
+            catch (ConnectionOfflineException e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(504); // 504 - Gateway Timeout
             }
             catch (Exception e) // Fallback any
             {

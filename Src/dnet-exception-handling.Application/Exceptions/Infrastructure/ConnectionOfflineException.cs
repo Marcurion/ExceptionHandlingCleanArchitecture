@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
-namespace dnet_exception_handling.Infrastructure.Exceptions
+namespace dnet_exception_handling.Application.Exceptions.Infrastructure
 {
-    internal class ConnectionOfflineException : Exception
+    public class ConnectionOfflineException : Exception
     {
         public ConnectionOfflineException()
         {
