@@ -13,12 +13,19 @@ namespace dnet_exception_handling.Infrastructure.Repositories
 {
     public void SaveAsync()
     {
+        if (false) // Let's assume we test if we are connected to the rest of the backend here
+        {
+            throw new ConnectionOfflineException("We have no intranet connection");
+        }
+
         try
         {
+            // Something went wrong
             throw new NotImplementedException();
         }
         catch (Exception e)
         {
+            // Exception reflects the technicalities of the infrastructure layer, exception is named from a technology perspective
             throw new SqlSaveException("Storing changes in Sql DB was not possible", e);
         }
 

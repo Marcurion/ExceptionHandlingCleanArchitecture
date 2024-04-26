@@ -19,15 +19,23 @@ namespace dnet_exception_handling.Application
 
         public void ChangeSomeData()
         {
+            if (false) // Let's say we check if we have the data to begin with
+            {
+                throw new DataNotFoundException("The requested data was not available");
+            }
+
             try
             {
                 _repository.SaveAsync();
             }
+            // Exception is re-contextualized for application layer, the exception is named from a use-case perspective
+            // We still don't know the exact exception type since we do not see the infrastructure layer in clean architecture
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw new DataChangeException("When we modified some business data things went south.", e);
             }
+
             
         }
 

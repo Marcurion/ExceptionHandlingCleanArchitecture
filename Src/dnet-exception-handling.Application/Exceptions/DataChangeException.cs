@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dnet_exception_handling.Application.Exceptions
 {
-    internal class DataChangeException : ApplicationException
+    public class DataChangeException : ApplicationException
     {
         public DataChangeException()
         {
